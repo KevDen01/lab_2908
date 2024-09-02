@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8  # Specify your Python version here
+    commands:
+      - echo Installing dependencies...
+      - pip install -r requirements.txt  # Assumes you have a requirements.txt file
+
+  pre_build:
+    commands:
+      - echo Preparing for build...
+
+  build:
+    commands:
+      - echo Building the project...
+      - echo No specific build steps required for this project.
+
+  post_build:
+    commands:
+      - echo Build completed on `date`.
+
+artifacts:
+  files:
+    - '**/*'  # This includes all files in the project directory
+  discard-paths: yes
