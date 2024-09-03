@@ -1,14 +1,17 @@
 version: 0.0
 os: linux
 files:
-  - source: /myapp/
-    destination: /opt/myapp/
+  - source: /deploy/lab_2908/
+    destination: /opt/lab_2908/
 hooks:
-  ApplicationStop:
-    - location: scripts/stop_server.sh
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh
       timeout: 300
       runas: root
   AfterInstall:
-    - location: scripts/install_dependencies.sh
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
+    - location: scripts/start_server.sh
       timeout: 300
       runas: root
